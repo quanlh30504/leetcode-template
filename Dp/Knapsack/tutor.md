@@ -559,7 +559,13 @@ mà chỉ cần:
 ```text
 dp[W + 1]
 ```
+```
+dp[w]
+```
 
+Ý nghĩa:
+
+Sau khi xử lý các item đã đi qua, dp[w] là answer tốt nhất với capacity w.
 ---
 
 # 11. Template 1D chuẩn của 0/1 Knapsack

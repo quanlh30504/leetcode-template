@@ -10,33 +10,24 @@ public class Practice {
     ) {
         int n = weights.length;
 
-        // dp[i][c] : this is the best value with first i item and capacity c
-        // transition
-        /*
-            case 1: skip item i -> dp[i][c] = dp[i-1][c]
-            case 2: if weight of item i is not greater than capacity -> dp[i][c] = values[i] + dp[i-1][c-weights[i]]
-        */
-        int[][] dp = new int[n +_1][capacity + 1];
-        dp[0][0] = 0;
-
-        for (int i = 1; i <= n; i++) {
+        //dp[i][c] is the max value of i first item with capacity c
+        int[][] dp = new int[n+1][capacity + 1];
+        for (int i = 1 ; i <= n; i++) {
             int weight = weights[i-1];
             int value = values[i-1];
-            
-            for (int c = 0; c <= capacity; c++) {
+
+
+            for (int c = 0 ; c<= capacity; c++) {
                 //skip
                 dp[i][c] = dp[i-1][c];
 
-                // take
-                if (c >= weight) {
-                    dp[i][c] = Math.max(dp[i][c], value + dp[i-1][c - weight]);
-                }
+                //take
+                if (c >= weight) dp[i][c] = Math.max(dp[i][c], value + dp[i-1][c-weight]);
             }
+
         }
 
-    
         return dp[n][capacity];
-
         
     }
 
